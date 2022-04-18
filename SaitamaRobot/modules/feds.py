@@ -7,19 +7,18 @@ import time
 import uuid
 from io import BytesIO
 
-import SaitamaRobot.modules.sql.feds_sql as sql
-from SaitamaRobot import (
-    EVENT_LOGS,
+import ftb.modules.sql.feds_sql as sql
+from ftb import (
+   LOG_MENTIONS as EVENT_LOGS,
     LOGGER,
     SUPPORT_CHAT,
-    OWNER_USERID,
+    SUDOERS as OWNER_USERID,
     SUPPORT_USERS,
     dispatcher,
-)
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.alternate import send_message
-from SaitamaRobot.modules.helper_funcs.chat_status import is_user_admin
-from SaitamaRobot.modules.helper_funcs.extraction import (
+
+from ftb.modules.helper_funcs.alternate import send_message
+from ftb.modules.helper_funcs.chat_status import is_user_admin
+from ftb.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
@@ -2392,9 +2391,9 @@ def fed_user_help(update: Update, context: CallbackContext):
     )
 
 
-__mod_name__ = "Federations"
+__MODULE__ = "Federations"
 
-__help__ = """
+__HELP__ = """
 Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
 But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
 *No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
@@ -2407,69 +2406,3 @@ Feds are now divided into 3 sections for your ease.
 • `/feduserhelp`*:* Provides help for commands anyone can use
 
 """
-
-NEW_FED_HANDLER = CommandHandler("newfed", new_fed, run_async=True)
-DEL_FED_HANDLER = CommandHandler("delfed", del_fed, run_async=True)
-RENAME_FED = CommandHandler("renamefed", rename_fed, run_async=True)
-JOIN_FED_HANDLER = CommandHandler("joinfed", join_fed, run_async=True)
-LEAVE_FED_HANDLER = CommandHandler("leavefed", leave_fed, run_async=True)
-PROMOTE_FED_HANDLER = CommandHandler("fpromote", user_join_fed, run_async=True)
-DEMOTE_FED_HANDLER = CommandHandler("fdemote", user_demote_fed, run_async=True)
-INFO_FED_HANDLER = CommandHandler("fedinfo", fed_info, run_async=True)
-BAN_FED_HANDLER = DisableAbleCommandHandler("fban", fed_ban, run_async=True)
-UN_BAN_FED_HANDLER = CommandHandler("unfban", unfban, run_async=True)
-FED_BROADCAST_HANDLER = CommandHandler("fbroadcast", fed_broadcast, run_async=True)
-FED_SET_RULES_HANDLER = CommandHandler("setfrules", set_frules, run_async=True)
-FED_GET_RULES_HANDLER = CommandHandler("frules", get_frules, run_async=True)
-FED_CHAT_HANDLER = CommandHandler("chatfed", fed_chat)
-FED_ADMIN_HANDLER = CommandHandler("fedadmins", fed_admin, run_async=True)
-FED_USERBAN_HANDLER = CommandHandler("fbanlist", fed_ban_list, run_async=True)
-FED_NOTIF_HANDLER = CommandHandler("fednotif", fed_notif, run_async=True)
-FED_CHATLIST_HANDLER = CommandHandler("fedchats", fed_chats, run_async=True)
-FED_IMPORTBAN_HANDLER = CommandHandler("importfbans", fed_import_bans, run_async=True)
-FEDSTAT_USER = DisableAbleCommandHandler(
-    ["fedstat", "fbanstat"], fed_stat_user, run_async=True
-)
-SET_FED_LOG = CommandHandler("setfedlog", set_fed_log, run_async=True)
-UNSET_FED_LOG = CommandHandler("unsetfedlog", unset_fed_log, run_async=True)
-SUBS_FED = CommandHandler("subfed", subs_feds, run_async=True)
-UNSUBS_FED = CommandHandler("unsubfed", unsubs_feds, run_async=True)
-MY_SUB_FED = CommandHandler("fedsubs", get_myfedsubs, run_async=True)
-MY_FEDS_LIST = CommandHandler("myfeds", get_myfeds_list, run_async=True)
-DELETEBTN_FED_HANDLER = CallbackQueryHandler(
-    del_fed_button, pattern=r"rmfed_", run_async=True
-)
-FED_OWNER_HELP_HANDLER = CommandHandler("fedownerhelp", fed_owner_help, run_async=True)
-FED_ADMIN_HELP_HANDLER = CommandHandler("fedadminhelp", fed_admin_help, run_async=True)
-FED_USER_HELP_HANDLER = CommandHandler("feduserhelp", fed_user_help, run_async=True)
-
-dispatcher.add_handler(NEW_FED_HANDLER)
-dispatcher.add_handler(DEL_FED_HANDLER)
-dispatcher.add_handler(RENAME_FED)
-dispatcher.add_handler(JOIN_FED_HANDLER)
-dispatcher.add_handler(LEAVE_FED_HANDLER)
-dispatcher.add_handler(PROMOTE_FED_HANDLER)
-dispatcher.add_handler(DEMOTE_FED_HANDLER)
-dispatcher.add_handler(INFO_FED_HANDLER)
-dispatcher.add_handler(BAN_FED_HANDLER)
-dispatcher.add_handler(UN_BAN_FED_HANDLER)
-dispatcher.add_handler(FED_BROADCAST_HANDLER)
-dispatcher.add_handler(FED_SET_RULES_HANDLER)
-dispatcher.add_handler(FED_GET_RULES_HANDLER)
-dispatcher.add_handler(FED_CHAT_HANDLER)
-dispatcher.add_handler(FED_ADMIN_HANDLER)
-dispatcher.add_handler(FED_USERBAN_HANDLER)
-dispatcher.add_handler(FED_NOTIF_HANDLER)
-dispatcher.add_handler(FED_CHATLIST_HANDLER)
-dispatcher.add_handler(FED_IMPORTBAN_HANDLER)
-dispatcher.add_handler(FEDSTAT_USER)
-dispatcher.add_handler(SET_FED_LOG)
-dispatcher.add_handler(UNSET_FED_LOG)
-dispatcher.add_handler(SUBS_FED)
-dispatcher.add_handler(UNSUBS_FED)
-dispatcher.add_handler(MY_SUB_FED)
-dispatcher.add_handler(MY_FEDS_LIST)
-dispatcher.add_handler(DELETEBTN_FED_HANDLER)
-dispatcher.add_handler(FED_OWNER_HELP_HANDLER)
-dispatcher.add_handler(FED_ADMIN_HELP_HANDLER)
-dispatcher.add_handler(FED_USER_HELP_HANDLER)
