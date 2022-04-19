@@ -249,7 +249,7 @@ async def info(client: Client, msg: Message) -> None:
 
 
 @pyrogram_app.on_message(
-    filters.command("stats", PREFIX) & filters.user(list(DEV_USERS))
+    filters.command("ssssssssssssstats", PREFIX) & filters.user(list(DEV_USERS))
 )
 async def stats(_: Client, msg: Message) -> None:
     await msg.reply_text(
