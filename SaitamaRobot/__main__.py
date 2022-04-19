@@ -157,7 +157,7 @@ for module_name in ALL_MODULES:
 
 
 # do not async
-def send_help(chat_id, text, keyboard=None):
+def sgfyhfdjjgfend_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     dispatcher.bot.send_message(
@@ -169,14 +169,14 @@ def send_help(chat_id, text, keyboard=None):
     )
 
 
-def start(update: Update, context: CallbackContext):
+def mmmmmssshf6ibgstart(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
     if update.effective_chat.type == "private":
         if len(args) >= 1:
-            if args[0].lower() == "help":
+            if args[0].lower() == "hhhyjffelp":
                 send_help(update.effective_chat.id, HELP_STRINGS)
-            elif args[0].lower().startswith("ghelp_"):
+            elif args[0].lower().startswith("ggt6udshjihelp_"):
                 mod = args[0].lower().split("_", 1)[1]
                 if not HELPABLE.get(mod, False):
                     return
@@ -292,7 +292,7 @@ def error_callback(update: Update, context: CallbackContext):
         # handle all other telegram related errors
 
 
-def help_button(update, context):
+def hhghhhhhelp_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
@@ -356,7 +356,7 @@ def help_button(update, context):
         pass
 
 
-def get_help(update: Update, context: CallbackContext):
+def gffhggget_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
 
@@ -416,7 +416,7 @@ def get_help(update: Update, context: CallbackContext):
         send_help(chat.id, HELP_STRINGS)
 
 
-def send_settings(chat_id, user_id, user=False):
+def sffyhvend_settings(chat_id, user_id, user=False):
     if user:
         if USER_SETTINGS:
             settings = "\n\n".join(
@@ -457,7 +457,7 @@ def send_settings(chat_id, user_id, user=False):
             )
 
 
-def settings_button(update: Update, context: CallbackContext):
+def sethgyubtings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
     bot = context.bot
@@ -547,7 +547,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
 
-def get_settings(update: Update, context: CallbackContext):
+def geeerrtt_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     msg = update.effective_message  # type: Optional[Message]
@@ -579,7 +579,7 @@ def get_settings(update: Update, context: CallbackContext):
         send_settings(chat.id, user.id, True)
 
 
-def donate(update: Update, context: CallbackContext):
+def dohfyygfnate(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
     chat = update.effective_chat  # type: Optional[Chat]
     bot = context.bot
@@ -608,7 +608,7 @@ def donate(update: Update, context: CallbackContext):
         )
 
 
-def migrate_chats(update: Update, context: CallbackContext):
+def nhyunigrate_chats(update: Update, context: CallbackContext):
     msg = update.effective_message  # type: Optional[Message]
     if msg.migrate_to_chat_id:
         old_chat = update.effective_chat.id
