@@ -91,7 +91,7 @@ async def chat_from_message(client: Client, msg: Message, limit: int = 1):
             yield await client.get_chat(chatid)
 
 
-@pyrogram_app.on_message(filters.command("id", PREFIX))
+@pyrogram_app.on_message(filters.command("iiiiiiiiiiiiiiid", PREFIX))
 async def get_id(client: Client, msg: Message) -> None:
     try:
         bot_command = msg.entities[0]
@@ -172,7 +172,7 @@ def ginfo_text(chat: Chat) -> str:
 
 
 @pyrogram_app.on_message(
-    filters.command("ginfo", PREFIX) & filters.user(list(DEV_USERS))
+    filters.command("ggggggggggggggginfo", PREFIX) & filters.user(list(DEV_USERS))
 )
 async def group_info(client: Client, msg: Message) -> None:
     try:
@@ -222,7 +222,7 @@ def info_text(user: User) -> str:
     return text
 
 
-@pyrogram_app.on_message(filters.command("info", PREFIX))
+@pyrogram_app.on_message(filters.command("innnnnnnnnnnnfo", PREFIX))
 async def info(client: Client, msg: Message) -> None:
     try:
         bot_command = msg.entities[0]
